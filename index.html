@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>The Yoshi Portal</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href='https://fonts.googleapis.com/css?family=Permanent Marker' rel='stylesheet'>
+    <link rel="prefetch" href="img/him.png">
+    <link rel="prefetch" href="img/him2.png">
+    <link rel="prefetch" href="img/him3.png">
+    <link rel="prefetch" href="img/him4.png">
+    <link rel="prefetch" href="img/him5.png">
+    <link rel="prefetch" href="img/HimTransparent.png">
+    <link rel="prefetch" href="img/cashBack.png">
+    <link rel="prefetch" href="img/pixelBack.png">
+    <link rel="prefetch" href="img/pixelCircle.png">
+    <link rel="prefetch" href="img/pixelTriangle.png">
+    <link rel="prefetch" href="img/alter0.png">
+    <link rel="prefetch" href="img/alter1.png">
+    <link rel="prefetch" href="img/alter2.png">
+    <link rel="prefetch" href="img/alter3.png">
+    <link rel="prefetch" href="img/alter4.png">
+    <link rel="prefetch" href="ms_sans_serif.woff">
+    <link rel="prefetch" href="ms_sans_serif.woff2">
+    <link rel="icon" type="image/png" href="img/him.png">
+  </head>
+  <body>
+    <script src="chs.js"></script>
+    <script src="core.js"></script>
+    <!--Top bar-->
+    <div id="topBar">
+      <div class="topBarTab" onclick="switchTab(1)">Yoshis</div>
+      <div class="topBarTab" style="display: none; color: white;" onclick="switchTab(2)">Time Machine</div>
+      <div class="topBarTab" style="display: none; color: #40ff40;" onclick="switchTab(3)">Capitalism</div>
+      <div class="topBarTab" style="display: none; color: #ffff60;" onclick="switchTab(4)">Blessings</div>
+      <div class="topBarTab" style="display: none; color: #e08080;" onclick="switchTab(5)">Alterations</div>
+      <div class="topBarTab" onclick="switchTab(6)">Options</div>
+    </div>
+    <!--Version info-->
+    <p id="topBarInfo">The Yoshi Portal<br>v1.0</p>
+
+    <!--Yoshis tab (contains portal and R&D)-->
+    <div id="yoshisTab">
+      <!--Portal-->
+      <p id="portalDivText"><u>Portal</u></p>
+      <div id="portalDiv">
+        <p id="yoshisText">You have <span id="yoshis" style="font-size: 2vw;">0</span> Yoshis</p>
+        <p id="yoshiSoftcapText">Yoshi gain is softcapped past 1.000e1,000</p>
+        <p id="yoshiSoftcapText2">Yoshi gain is softcapped again past 1.000e1,000,000</p>
+        <p id="yoshiSoftcapText3">Yoshi gain is softcapped AGAIN past 1.000e50,000,000</p>
+        <p id="yoshiSoftcapText4">Yoshi gain is harsly softcapped past e1.000e15</p>
+        <p id="yoshisPerClickText">You get <span id="yoshisPerClick">0</span> Yoshis per click</p>
+        <button id="portalButton" onclick="usePortal()">Pull a Yoshi through the portal</button>
+        <button id="buyMaxUpgradesButton" onclick="buyMaxUpgrades()">Buy max upgrades</button>
+
+        <!--Unlock buttons-->
+        <button id="unlockAutomatorButton" onclick="unlockAutomators()">Unlock portal automators<br>Costs 30 Yoshis</button>
+        <button id="unlockRnDButton" onclick="unlockRnD()">Unlock R&D<br>Costs 150,000 Yoshis</button>
+        <button id="takeOverWorldButton" onclick="takeOverWorld()">Take over the world<br>Costs 1.000e10 Yoshis</button>
+        <button id="unlockCapitalismButton" onclick="unlockCapitalism()">Unlock capitalism<br>Costs 1.000e125 Yoshis</button>
+        <button id="unlockBlessingsButton" onclick="unlockBlessings()">Unlock blessings<br>Costs 1.000e1,010,000 Yoshis</button>
+        <button id="unlockAlterationsButton" onclick="unlockAlterations()">Unlock alterations<br>Costs 1e1.000e15 Yoshis</button>
+        
+        <!--Automators-->
+        <div id="automatorsDiv">
+          <p id="automatorsText">You have <span id="automators" style="color: #a0a0a0;">0</span><span id="freeAutomators" style="color: #a0a0a0;"></span> automators,<br>pulling <span id="yoshisPerSecond">0</span> Yoshis per second</p>
+          <button id="buyAutomatorButton" onclick="buyAutomator()">Buy an automator<br>Costs <span id="automatorCost">20</span> Yoshis</button>
+          <button id="doubleAutomatorButton" onclick="doubleAutomators()">Double automator power<br>Costs <span id="automatorDoubleCost">100</span> Yoshis</button>
+          <button id="autobuyButton" onclick="toggleAutobuy()">Turn autobuy off</button>
+        </div>
+      </div>
+
+      <!--R&D-->
+      <p id="RnDDivText"><u>R&D</u></p>
+      <div id="RnDDiv">
+        <button onclick="buyUpgrade(1)" class="upgrade" style="background-image: linear-gradient(#707070, #484848);">Upgrade 1-1<br>Doublers are 80% cheaper<br>Costs 100,000 Yoshis</button>
+        <button onclick="buyUpgrade(2)" class="upgrade" style="background-image: linear-gradient(#707070, #484848);">Upgrade 1-2<br>Each doubler gives 3 free automators<br>Costs 500,000 Yoshis</button>
+        <button onclick="buyUpgrade(3)" class="upgrade">Upgrade 1-3<br>Unlock 3 more upgrades<br>Costs 4,000,000 Yoshis</button>
+        <button onclick="buyUpgrade(4)" class="upgrade" style="display: none;">Upgrade 2-1<br>Lets you pull 25% of Yoshis/second each click<br>Costs 7,500,000 Yoshis</button>
+        <button onclick="buyUpgrade(5)" class="upgrade" style="display: none; background-image: linear-gradient(#707070, #484848);">Upgrade 2-2<br>Doublers are 80% cheaper again<br>Costs 30,000,000 Yoshis</button>
+        <button onclick="buyUpgrade(6)" class="upgrade" style="display: none; background-image: linear-gradient(#707070, #484848);">Upgrade 2-3<br>Unlock autobuy for doublers and automators<br>Costs 250,000,000 Yoshis</button>
+        <button onclick="buyUpgrade(7)" class="upgrade" style="display: none; background-image: linear-gradient(#006060, #003030);">Upgrade 3-1<br>Each doubler gives 3 more free automators<br>Costs 2.000e15 Yoshis</button>
+        <button onclick="buyUpgrade(8)" class="upgrade" style="display: none; background-image: linear-gradient(#006060, #003030);">Upgrade 3-2<br>Yoshis boost yoshis/second<br>Costs 3.000e17 Yoshis</button>
+        <button onclick="buyUpgrade(9)" class="upgrade" style="display: none; background-image: linear-gradient(#006060, #003030);">Upgrade 3-3<br>Each doubler gives 15 more free automators<br>Costs 1.000e24 Yoshis</button>
+      </div>
+    </div>
+
+    <!--Time machine tab (contains tachyon upgrades)-->
+    <div id="timeMachineTab">
+      <button id="rewindButton" onclick="rewindTime()"><p id="rewindText">Rewind time to gain <span id="tachyonsToGet">0</span> tachyons</p></button>
+      <div id="tachyonsTextBox"><p id="tachyonsText">You have <span id="tachyons" style="font-size: 2vw;">0</span> tachyons<br>(<span id="totalTachyons">0</span> total)</p></div>
+      <div id="yoshisTextBox"><p id="yoshisText2">You have <span id="yoshis2" style="font-size: 2vw;">0</span> Yoshis</p></div>
+
+      <!--Tachyon upgrades-->
+      <button onclick="buyTachyonUpgrade(1)" class="tachyonUpgrade" style="top: 22vh; left: 33.3vw;">Boost yoshis/second based on total tachyons<br>Currently <span id="tachyonBoost">1</span>x<span id="tachyonBoostHardcap" style="color: #d06060">&nbsp;(hardcapped)</span><br>Costs 1 tachyon</button>
+      <button onclick="buyTachyonUpgrade(2)" class="tachyonUpgrade" style="top: 22vh; left: 66.7vw;">Doubler price increase is lower<br>Costs 1 tachyon</button>
+      <button onclick="buyTachyonUpgrade(3)" class="tachyonUpgrade" style="top: 36vh; left: 20vw;">Keep automators tab on reset<br>Costs 2 tachyons</button>
+      <button onclick="buyTachyonUpgrade(4)" class="tachyonUpgrade" style="top: 36vh; left: 50vw;">Unlock 3 more upgrades<br>Costs 4 tachyons</button>
+      <button onclick="buyTachyonUpgrade(5)" class="tachyonUpgrade" style="top: 36vh; left: 80vw;">Unlock 3 more tachyon upgrades<br>Costs 10 tachyons</button>
+      <button onclick="buyTachyonUpgrade(6)" class="tachyonUpgrade" style="display: none; top: 50vh; left: 20vw;">Yoshis boost tachyon gain<br>Costs 10 tachyons</button>
+      <button onclick="buyTachyonUpgrade(7)" class="tachyonUpgrade" style="display: none; top: 50vh; left: 50vw;">Boost yoshis/second based on unspent tachyons<br>Currently <span id="tachyonBoost2">1</span>x<span id="tachyonBoostHardcap2" style="color: #d06060">&nbsp;(hardcapped)</span><br>Costs 50 tachyons</button>
+      <button onclick="buyTachyonUpgrade(8)" class="tachyonUpgrade" style="display: none; top: 50vh; left: 80vw;">Unlock a new unlock button<br>Costs 250 tachyons</button>
+      <button onclick="buyTachyonUpgrade(9)" class="tachyonUpgrade" style="display: none; top: 64vh; left: 14vw;">Unlock "buy max" for regular upgrades<br>Costs 6,000 tachyons</button>
+      <button onclick="buyTachyonUpgrade(10)" class="tachyonUpgrade" style="display: none; top: 64vh; left: 38vw;">Keep one automator upon rewind<br>Costs 15,000 tachyons</button>
+      <button onclick="buyTachyonUpgrade(11)" class="tachyonUpgrade" style="display: none; top: 64vh; left: 62vw;">Automatically gain 100% of tachyon gain every second<br>Costs 60,000 tachyons</button>
+      <button onclick="buyTachyonUpgrade(12)" class="tachyonUpgrade" style="display: none; top: 64vh; left: 86vw;">Unlock a new unlock button<br>Costs 5.000e9 tachyons</button>
+      <button onclick="buyTachyonUpgrade(13)" class="tachyonUpgrade" style="display: none; top: 78vh; left: 20vw;">Blessing upgrade 11 no longer decreases blessing time<br>Costs 5.000e21 tachyons</button>
+      <button onclick="buyTachyonUpgrade(14)" class="tachyonUpgrade" style="display: none; top: 78vh; left: 50vw;">Multiply tachyon gain by 20<br>Costs 1.000e23 tachyons</button>
+      <button onclick="buyTachyonUpgrade(15)" class="tachyonUpgrade" style="display: none; top: 78vh; left: 80vw;">Unlock a new unlock button<br>Costs 1.000e37 tachyons</button>
+      
+    </div>
+
+    <!--Capitalism tab-->
+    <div id="capitalismTab">
+      <div id="capitalismBack" loading="eager"></div>
+      <p id="capitalismTitle">$$$ CAPITALISM $$$</p>
+      <p id="taxText">Your yoshis have evaded their taxes <span id="taxesEvaded">0</span> times, giving you<br><u><span id="money" style="font-size: 4vw; line-height: 4.5vw">$0</span></u><br><span style="font-size: 0.8vw; line-height: 0.9vw;">$<span id="moneyToGain"></span>/second (Based on log(Yoshis))</span></p>
+
+      <!--Capitalism one-time buttons-->
+      <div id="capitalismButtonsDiv">
+        <button class="capitalismButton" onclick="buyCapitalismMoney()">Double money gain<span id="capitalismMax1"></span><br>Costs $<span id="capitalismMoneyCost">3,000</span></button>
+        <button class="capitalismButton" onclick="buyCapitalismYoshis()">Increase Yoshi gain<span id="capitalismMax2"></span><br>Currently x^<span id="capitalismYoshiBoost">1.000</span><br>Costs $<span id="capitalismYoshisCost">50,000</span></button>
+        <button class="capitalismButton"  onclick="buyCapitalismTachyons()">Increase tachyon gain<span id="capitalismMax3"></span><br>Currently x*<span id="capitalismTachyonBoost">1.000</span><br>Costs $<span id="capitalismTachyonsCost">150,000</span></button>
+        <button class="capitalismButton" onclick="buyCapitalismMax()" style="display: none;">Increase max for capitalism buttons 2 and 3<br>Costs $<span id="capitalismMaxCost">1.000e26</span></button>
+      </div>
+
+      <!--Capitalism upgrades-->
+      <div id="capitalismUpgradesDiv">
+        <button class="capitalismUpgrade" onclick="buyCapitalismUpgrade(1)">Money increases money gain<br>Currently x*<span id="moneySelfBoost">1.000</span><br>Costs $5,000,000</button>
+        <button class="capitalismUpgrade" onclick="buyCapitalismUpgrade(2)">Doubling money gain is 80% cheaper<br>Costs $750,000,000</button>
+        <button class="capitalismUpgrade" onclick="buyCapitalismUpgrade(3)">Unlock 4 more tachyon upgrades<br>Costs $6.000e10</button>
+        <button class="capitalismUpgrade" onclick="buyCapitalismUpgrade(4)">Yoshi gain is exponentiated by 1.4<br>Costs $1.000e12</button>
+        <button class="capitalismUpgrade" onclick="buyCapitalismUpgrade(5)">Doubling money gain is 80% cheaper again<br>Costs $2.500e12</button>
+        <button class="capitalismUpgrade" onclick="buyCapitalismUpgrade(6)">Money boosts Yoshi gain<br>Currently x^<span id="moneyYoshiBoost">1.000</span><br>Costs $2.000e14</button>
+        <button class="capitalismUpgrade" onclick="buyCapitalismUpgrade(7)">Tachyon gain is exponentiated by 1.2<br>Costs $1.500e16</button>
+        <button class="capitalismUpgrade" onclick="buyCapitalismUpgrade(8)" style="display: none;">Blue Yoshi's blessing increases 4x as fast,<br>and Pink Yoshi's blessing increases 2x as fast<br>Costs $1.000e26</button>
+        <button class="capitalismUpgrade" onclick="buyCapitalismUpgrade(9)" style="display: none;">Red blessing upgrade 3 no longer decreases blessing time<br>Costs $1.000e29</button>
+        <button class="capitalismUpgrade" onclick="buyCapitalismUpgrade(10)" style="display: none;">Unlock 3 more tachyon upgrades<br>Costs $1.000e34</button>
+      </div>
+    </div>
+
+    <!--Blessings tab-->
+    <div id="blessingsTab">
+      <p id="blessingsDivText"><u>Blessings</u></p>
+      <div id="blessingsDiv">
+        <img id="blessingCircle" src="img/pixelCircle.png">
+        <div id="blessingInfoDiv">
+          <p id="blessingInfo1">Red Yoshi's Blessing</p>
+          <p id="blessingInfo2">(Temporary)</p>
+          <p id="blessingInfo3">Boosts Yoshi Gain.<br>Currently x^1.00</p>
+        </div>
+        <div class="blessing" onmouseover="showBlessing(1)" onmouseout="hideBlessing()" onclick="activateBlessing(1)" style="bottom: 35vw; left: 20vw; background-color: #ff0000"></div>
+        <div class="blessing" onmouseover="showBlessing(2)" onmouseout="hideBlessing()" onclick="activateBlessing(2)" style="bottom: 29.35vw; left: 31.73vw; background-color: #ff8000"></div>
+        <div class="blessing" onmouseover="showBlessing(3)" onmouseout="hideBlessing()" onclick="activateBlessing(3)" style="bottom: 16.66vw; left: 34.62vw; background-color: #ffff00"></div>
+        <div class="blessing" onmouseover="showBlessing(4)" onmouseout="hideBlessing()" onclick="activateBlessing(4)" style="bottom: 6.49vw; left: 26.51vw; background-color: #00ffff"></div>
+        <div class="blessing" onmouseover="showBlessing(5)" onmouseout="hideBlessing()" onclick="activateBlessing(5)" style="bottom: 6.49vw; left: 13.49vw; background-color: #0000ff"></div>
+        <div class="blessing" onmouseover="showBlessing(6)" onmouseout="hideBlessing()" onclick="activateBlessing(6)" style="bottom: 16.66vw; left: 5.38vw; background-color: #8000ff"></div>
+        <div class="blessing" onmouseover="showBlessing(7)" onmouseout="hideBlessing()" onclick="activateBlessing(7)" style="bottom: 29.35vw; left: 8.27vw; background-color: #ff00ff"></div>
+      </div>
+      <p id="TvPText">(Temporary) blessings only take effect while the blessing is active.<br><br>(Permanent) blessings are always in effect, but gain power while the blessing is active.<br><br>Blessing power/gain increases with more blessing time.<br><br>You have<br><span id="yoshis3" style="font-size: 1.5vw;">0</span><br>Yoshis&nbsp;(<span id="yoshisPerSecond2">0</span>/second)</p>
+      <p id="blessingTimeText">You have <span id="blessingTime">0.00</span> seconds of blessing time</p>
+      <button id="resetBlessingUpgrades" onclick="resetBlessingUpgrades()">Reset blessing<br>upgrades</button>
+      <div id="blessingUpgradesDiv">
+        <button class="blessingUpgrade buRed" onclick="buyBlessingUpgrade(1)">Spare light coins boost money gain<br>Currently x^<span id="BU1Boost">1.00</span></button>
+        <button class="blessingUpgrade buRed" onclick="buyBlessingUpgrade(2)">Orange Yoshi's Blessing is 2x as powerful</button>
+        <button class="blessingUpgrade buRed" onclick="buyBlessingUpgrade(3)">Unlock new capitalism upgrades (permanent)</button>
+        <button class="blessingUpgrade buRed" onclick="buyBlessingUpgrade(4)">Blessing time always decreases, but Purple Yoshi's blessing increases 3x as fast</button>
+        <button class="blessingUpgrade buRed" onclick="buyBlessingUpgrade(5)">Double blessing time gain</button>
+        <button class="blessingUpgrade buRed" onclick="buyBlessingUpgrade(6)">Multiply Yoshi gain by 1.000e1,000,000</button>
+        <div id="blessingUpgradesBox">
+          <p id="lightCoinsText">You have <span id="lightCoins">0</span> spare light coins</p>
+          <p id="lightCoinsSubtext">(<span id="totalLightCoins">0</span> total, next at <span id="lightCoinRequirement">1.000e2,000,000</span> Yoshis)</p>
+        </div>
+        <button class="blessingUpgrade buBlue" onclick="buyBlessingUpgrade(7)">Exponentiate Yoshi gain based on total light coins<br>Currently x^<span id="BU7Boost">1.00</span></button>
+        <button class="blessingUpgrade buBlue" onclick="buyBlessingUpgrade(8)">Light Blue Yoshi's blessing increases 3x as fast</button>
+        <button class="blessingUpgrade buBlue" onclick="buyBlessingUpgrade(9)">Triple tachyon gain</button>
+        <button class="blessingUpgrade buBlue" onclick="buyBlessingUpgrade(10)">Money increases blessing time gain<br>Currently x*<span id="BU10Boost">1.00</span></button>
+        <button class="blessingUpgrade buBlue" onclick="buyBlessingUpgrade(11)">Blessing time always decreases, but multiply money gain by 10</button>
+        <button class="blessingUpgrade buBlue" onclick="buyBlessingUpgrade(12)">All permanent blessings increase 3x as fast</button>
+      </div>
+    </div>
+
+    <!--Alterations tab-->
+    <div id="alterationsTab">
+      <p id="alterationsTitle">Alterations</p>
+      <div id="alterationsDescDiv"><p id="alterationsDesc">WARNING: Entering/exiting an alteration resets your Yoshis, Tachyons, Money, and most of their respective upgrades.</p></div>
+      <div id="alterationsDiv">
+        <img class="alterationMainImage" src="img/alter0.png">
+        <img class="alterationMainImage" src="img/alter1.png" style="display: none;">
+        <img class="alterationMainImage" src="img/alter2.png" style="display: none;">
+        <img class="alterationMainImage" src="img/alter3.png" style="display: none;">
+        <img class="alterationMainImage" src="img/alter4.png" style="display: none;">
+        <div class="alterationImageDiv" style="top: 12%; left: 50%;" onmouseover="changeAlterationSrc(1)" onmouseout="changeAlterationSrc(0)" onclick="startAlteration(1)">
+          <img class="alterationImage" src="img/alter1.png" onclick="changeAlterationSrc(1)">
+        </div>
+        <div class="alterationImageDiv" style="top: 50%; left: 88%;" onmouseover="changeAlterationSrc(2)" onmouseout="changeAlterationSrc(0)" onclick="startAlteration(2)">
+          <img class="alterationImage" src="img/alter2.png" onclick="changeAlterationSrc(2)">
+        </div>
+        <div class="alterationImageDiv" style="top: 88%; left: 50%;" onmouseover="changeAlterationSrc(3)" onmouseout="changeAlterationSrc(0)" onclick="startAlteration(3)">
+          <img class="alterationImage" src="img/alter3.png" onclick="changeAlterationSrc(3)">
+        </div>
+        <div class="alterationImageDiv" style="top: 50%; left: 12%;" onmouseover="changeAlterationSrc(4)" onmouseout="changeAlterationSrc(0)" onclick="startAlteration(4)">
+          <img class="alterationImage" src="img/alter4.png" onclick="changeAlterationSrc(4)">
+        </div>
+      </div>
+      <div id="alterationInfoDiv">
+        <p id="alterationName"></p>
+        <p id="alterationInfo"></p>
+      </div>
+      <div id="currentAlterationDiv">
+        <p id="currentAlterationInfo">Current alteration:<br>None</p>
+      </div>
+      <button id="endAlterationButton" onclick="endAlteration()">End current alteration</button>
+      <button id="completeAlterationButton" onclick="completeAlteration()">Complete alteration</button>
+
+      <!--Alteration upgrades-->
+      <div id="alterationUpgradesDiv">
+        <button class="alterationUpgrade" onclick="buyAlterationUpgrade(1)">Autobuy money buyables once/second<br>Costs e1.020e15 Yoshis</button>
+        <button class="alterationUpgrade" onclick="buyAlterationUpgrade(2)">Spirit Phone requirement is square rooted<br>Costs e1.025e15 Yoshis</button>
+        <button class="alterationUpgrade" onclick="buyAlterationUpgrade(3)">Activate all alterations at once,<br>but gain a massive Yoshi boost<br><span style="color: #ff4040">Don't. Don't do this. This is a bad idea.</span><br>Costs e1.030e15 Yoshis</button>
+      </div>
+    </div>
+
+    <!--Options tab-->
+    <div id="optionsTab">
+      <h1 id="optionsTitle">Options</h1>
+      <button class="optionsButton" id="autosaveState" onclick="autosaveState()">Disable autosave</button>
+      <button class="optionsButton" onclick="save()">Save</button>
+      <button class="optionsButton" onclick="exportGame()">Export</button>
+      <button class="optionsButton" onclick="importGame()">Import</button>
+      <button class="optionsButton" style="border-color: #ff4040;" onclick="hardReset()">Hard reset</button>
+      <button id="discordButton" onclick="window.open('https://discord.gg/7PChmUV3wk')">Discord server</button>
+      <img src="img/HimTransparent.png" alt="Yoshi" style="position: absolute; bottom: 0.8vw; right: 0.8vw; height: 30vh;">
+    </div>
+    
+    <div id="cover">
+      <p id="skipText" onclick="skipText()">Skip</p>
+      <img id="yoshiIcon" src="img/him.png" alt="Yoshi">
+      <div id="dialogBox" onclick="nextMessage()">
+        <p id="dialog"></p>
+      </div>
+      <div id="endingDiv">
+        <p id="endingText"><span style="font-size: 8vw">You Win</span><br>Nice one.</p>
+        <button id="endingButton" onclick="endGame()">I want to go back!</div>
+      </div>
+    </div>
+
+    <!--Scripts-->
+    <script src="OmegaNum.js"></script>
+    <script src="Mousetrap.js"></script>
+    <script src="jquery-3.6.0.min.js"></script>
+    <script src="capitalism.js"></script>
+    <script src="main.js"></script>
+    <script src="dialog.js"></script>
+    <script src="yoshi.js"></script>
+    <script src="timeMachine.js"></script>
+    <script src="blessings.js"></script>
+    <script src="alterations.js"></script>
+<!--客服 开始-->
+<link rel="stylesheet" href="//g8hh.github.io/static/css/kf.css" type="text/css" media="screen" charset="utf-8">
+<script src="//g8hh.github.io/static/js/kf.js"></script>
+<!-- 客服 结束 -->
+<!--站长统计-->
+<div style="display: none"><script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?f237591d5976f87ca2e06b38c3658d9c";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+  
+      </div>
+  </body>
+</html>
