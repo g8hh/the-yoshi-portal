@@ -105,7 +105,7 @@ var cnItems = {
     "Tachyon gain is exponentiated by 1.2": "超光速粒子增益乘以 1.2",
     "tachyons": "超光速粒子",
     "Take over the world": "征服世界",
-    "The Yoshi Portal": "耀西门户",
+    "The Yoshi Portal": "耀西之门",
     "Time Machine": "时间机器",
     "times, giving you": "次，给你",
     "total, next at": "总计，接下来",
