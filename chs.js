@@ -109,6 +109,7 @@ var cnItems = {
     "total)": "总计）",
     "Triple tachyon gain": "三倍超光速粒子增益",
     "Turn autobuy off": "关闭自动购买",
+    "Turn autobuy on": "开启自动购买",
     "Unlock \"buy max\" for regular upgrades": "解锁“buy max”以进行定期升级",
     "Unlock 3 more tachyon upgrades": "解锁另外 3 个超光速粒子升级",
     "Unlock 3 more upgrades": "解锁另外 3 个升级",
